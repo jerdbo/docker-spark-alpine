@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:8u171-jre-alpine3.8
 
 ENV ENABLE_INIT_DAEMON true
 ENV INIT_DAEMON_BASE_URI http://identifier/init-daemon
@@ -13,12 +13,11 @@ COPY finish-step.sh /
 
 #COPY bde-spark.css /css/org/apache/spark/ui/static/timeline-view.css
 
-ADD https://raw.githubusercontent.com/guilhem/apt-get-install/master/apt-get-install /usr/bin/
-RUN chmod +x /usr/bin/apt-get-install
 
-RUN apt-get-install -y curl \
+
+RUN apk add --update  --no-cache bash wget\
       && chmod +x *.sh \
-      && wgethttp://mirrors.hust.edu.cn/apache/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
+      && wget http://mirrors.hust.edu.cn/apache/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
       && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
       && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark \
       && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
@@ -26,7 +25,7 @@ RUN apt-get-install -y curl \
       #&& jar uf /spark/jars/spark-core_2.11-${SPARK_VERSION}.jar org/apache/spark/ui/static/timeline-view.css \
       && cd /
 
-RUN apt-get-install -y python3 python3-setuptools python3-pip
+RUN apk add --no-cache --update python3 curl
 
 #Give permission to execute scripts
 RUN chmod +x /wait-for-step.sh && chmod +x /execute-step.sh && chmod +x /finish-step.sh
