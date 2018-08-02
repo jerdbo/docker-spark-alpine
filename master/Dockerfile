@@ -1,7 +1,4 @@
-FROM bde2020/spark-base:2.3.1-hadoop2.7
-
-MAINTAINER Erika Pauwels <erika.pauwels@tenforce.com>
-MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+FROM jerdbo/spark-base:2.3.1-hadoop2.7
 
 COPY master.sh /
 

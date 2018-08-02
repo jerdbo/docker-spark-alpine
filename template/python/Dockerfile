@@ -1,6 +1,5 @@
-FROM bde2020/spark-submit:2.3.1-hadoop2.7
+FROM jerdbo/spark-submit:2.3.1-hadoop2.7
 
-MAINTAINER Cecile Tonglet <cecile.tonglet@tenforce.com>
 
 COPY template.sh /
 

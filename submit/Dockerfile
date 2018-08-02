@@ -1,7 +1,4 @@
-FROM bde2020/spark-base:2.3.1-hadoop2.7
-
-MAINTAINER Erika Pauwels <erika.pauwels@tenforce.com>
-MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+FROM jerdbo/spark-base:2.3.1-hadoop2.7
 
 ENV SPARK_MASTER_NAME spark-master
 ENV SPARK_MASTER_PORT 7077

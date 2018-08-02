@@ -1,7 +1,4 @@
-FROM bde2020/spark-submit:2.3.1-hadoop2.7
-
-MAINTAINER Erika Pauwels <erika.pauwels@tenforce.com>
-MAINTAINER Gezim Sejdiu <g.sejdiu@gmail.com>
+FROM jerdbo/spark-submit:2.3.1-hadoop2.7
 
 ENV SPARK_APPLICATION_JAR_NAME application-1.0
 
